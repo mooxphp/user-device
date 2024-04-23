@@ -1,16 +1,13 @@
 <?php
 
 return [
-    'single' => 'Сборщик',
-    'plural' => 'Сборщики',
-    'breadcrumb' => 'Сборщик',
-    'title' => 'Сборщик',
-    'navigation_label' => 'Сборщик',
-    'navigation_group' => 'Сборщик Moox',
-    'totalone' => 'Первый сборщик',
-    'totaltwo' => 'Второй Сборщик',
-    'totalthree' => 'Третий Сборщик',
-    'name' => 'Имя',
-    'started_at' => 'Начато в',
-    'failed' => 'Неудача',
+    'single' => 'Device',
+    'plural' => 'Devices',
+    'breadcrumb' => 'Device',
+    'title' => 'Device',
+    'navigation_label' => 'User Device',
+    'navigation_group' => 'Moox User',
+    'title' => 'Title',
+    'created_at' => 'Created at',
+    'active' => 'active',
 ];

@@ -25,11 +25,10 @@ class UserDeviceResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('name')
+                TextInput::make('title')
                     ->maxLength(255),
-                DateTimePicker::make('started_at'),
-                DateTimePicker::make('finished_at'),
-                Toggle::make('failed')
+                DateTimePicker::make('created_at'),
+                Toggle::make('active')
                     ->required(),
             ]);
     }
@@ -38,18 +37,18 @@ class UserDeviceResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name')
-                    ->label(__('user-device::translations.name'))
+                TextColumn::make('title')
+                    ->label(__('user-device::translations.title'))
                     ->sortable(),
-                TextColumn::make('started_at')
-                    ->label(__('user-device::translations.started_at'))
+                TextColumn::make('created_at')
+                    ->label(__('user-device::translations.created_at'))
                     ->since()
                     ->sortable(),
-                TextColumn::make('failed')
-                    ->label(__('user-device::translations.failed'))
+                TextColumn::make('active')
+                    ->label(__('user-device::translations.active'))
                     ->sortable(),
             ])
-            ->defaultSort('name', 'desc')
+            ->defaultSort('title', 'desc')
             ->actions([
                 EditAction::make(),
             ])

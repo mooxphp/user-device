@@ -1,16 +1,13 @@
 <?php
 
 return [
-    'single' => 'Bygger',
-    'plural' => 'Byggers',
-    'breadcrumb' => 'Bygger',
-    'title' => 'Bygger',
-    'navigation_label' => 'Bygger',
-    'navigation_group' => 'Moox UserDevice',
-    'totalone' => 'Bygger én',
-    'totaltwo' => 'Bygger to',
-    'totalthree' => 'Bygger tre',
-    'name' => 'Navn',
-    'started_at' => 'Startet',
-    'failed' => 'mislyktes',
+    'single' => 'Device',
+    'plural' => 'Devices',
+    'breadcrumb' => 'Device',
+    'title' => 'Device',
+    'navigation_label' => 'User Device',
+    'navigation_group' => 'Moox User',
+    'title' => 'Title',
+    'created_at' => 'Created at',
+    'active' => 'active',
 ];

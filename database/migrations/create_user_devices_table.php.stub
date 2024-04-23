@@ -3,30 +3,31 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Str;
 
-return new class extends Migration
+class new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
         Schema::create('user_devices', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->timestamp('started_at')->nullable()->index();
-            $table->timestamp('finished_at')->nullable();
-            $table->boolean('failed')->default(false)->index();
+            $table->string('title');
+            $table->string('slug')->unique();
+            $table->morphs('user');
+            $table->string('user_agent')->nullable();
+            $table->string('os')->nullable();
+            $table->string('browser')->nullable();
+            $table->string('country')->nullable();
+            $table->string('location')->nullable();
+            $table->boolean('whitelisted')->default(false);
+            $table->boolean('active')->default(false);
+            $table->ipAddress('ip_address')->nullable();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-
+    public function down()
     {
-        Schema::dropIfExists('user-device');
+        Schema::dropIfExists('user_devices');
     }
-};
+}
