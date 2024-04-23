@@ -1,22 +1,16 @@
-![Moox Builder](https://github.com/mooxphp/moox/raw/main/art/banner/builder.jpg)
+![Moox UserDevice](https://github.com/mooxphp/moox/raw/main/art/banner/user-device.jpg)
 
-# Moox Builder
+# Moox UserDevice
 
-<!--shortdesc-->
-
-This template is used for generating all Moox packages. Press the Template-Button in GitHub, to create your own.
-
-If you install it, it will completely work without beeing useful. Guaranteed!
-
-<!--/shortdesc-->
+This is my package user-device
 
 ## Quick Installation
 
 These two commmands are all you need to install the package:
 
 ```bash
-composer require moox/builder
-php artisan mooxbuilder:install
+composer require moox/user-device
+php artisan mooxuser-device:install
 ```
 
 Curious what the install command does? See manual installation below.
@@ -31,15 +25,15 @@ Here are some things missing, like an overview with screenshots about this packa
 
 ## Manual Installation
 
-Instead of using the install-command `php artisan mooxbuilder:install` you are able to install this package manually step by step:
+Instead of using the install-command `php artisan mooxuser-device:install` you are able to install this package manually step by step:
 
 ```bash
 // Publish and run the migrations:
-php artisan vendor:publish --tag="builder-migrations"
+php artisan vendor:publish --tag="user-device-migrations"
 php artisan migrate
 
 // Publish the config file with:
-php artisan vendor:publish --tag="builder-config"
+php artisan vendor:publish --tag="user-device-config"
 ```
 
 ## Changelog
