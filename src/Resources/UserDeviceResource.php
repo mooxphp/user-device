@@ -3,14 +3,17 @@
 namespace Moox\UserDevice\Resources;
 
 use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
+use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Config;
 use Moox\UserDevice\Models\UserDevice;
 use Moox\UserDevice\Resources\UserDeviceResource\Pages\ListPage;
 use Moox\UserDevice\Resources\UserDeviceResource\Widgets\UserDeviceWidgets;
@@ -28,6 +31,30 @@ class UserDeviceResource extends Resource
                 TextInput::make('title')
                     ->maxLength(255),
                 DateTimePicker::make('created_at'),
+
+                Select::make('user_type')
+                    ->options(function () {
+                        $models = Config::get('user-device.user_models', []);
+
+                        return array_flip($models);
+                    })
+                    ->reactive()
+                    ->afterStateUpdated(function (Set $set, $state) {
+                        $set('user_id', null);
+                    })
+                    ->required(),
+
+                Select::make('user_id')
+                    ->options(function ($get) {
+                        $userType = $get('user_type');
+                        if (! $userType) {
+                            return [];
+                        }
+
+                        return $userType::query()->pluck('name', 'id')->toArray();
+                    })
+                    ->required(),
+
                 Toggle::make('active')
                     ->required(),
             ]);
@@ -46,6 +73,15 @@ class UserDeviceResource extends Resource
                     ->sortable(),
                 TextColumn::make('active')
                     ->label(__('user-device::translations.active'))
+                    ->sortable(),
+                TextColumn::make('user_type')
+                    ->label(__('user-device::translations.user_type'))
+                    ->sortable(),
+                TextColumn::make('user_id')
+                    ->label(__('user-device::translations.username'))
+                    ->getStateUsing(function ($record) {
+                        return optional($record->user)->name ?? 'unknown';
+                    })
                     ->sortable(),
             ])
             ->defaultSort('title', 'desc')
