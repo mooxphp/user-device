@@ -19,7 +19,7 @@
     "require": {
         "geoip2/geoip2": "^3.0",
         "jenssegers/agent": "^2.6",
-        "moox/core": "3.1.123"
+        "moox/core": "3.1.124"
     },
     "require-dev": {
         "moox/devtools": "self.version"
