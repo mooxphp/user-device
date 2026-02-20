@@ -19,10 +19,10 @@
     "require": {
         "geoip2/geoip2": "^3.0",
         "jenssegers/agent": "^2.6",
-        "moox/core": "5.0.11"
+        "moox/core": "5.0.12"
     },
     "require-dev": {
-        "moox/devtools": "5.0.11"
+        "moox/devtools": "5.0.12"
     },
     "autoload": {
         "psr-4": {
